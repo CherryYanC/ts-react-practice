@@ -1,18 +1,18 @@
 import { observable, action } from 'mobx'
 
 class TestStore {
-    @observable name
-    @observable age
+  @observable name
+  @observable age
 
-    @action 
-    changeAge (i: number) {
-        this.age = this.age + i
-    }
+  @action
+  changeAge(i: number) {
+    this.age = this.age + i
+  }
 
-    constructor () {
-        this.name = 'hello world'
-        this.age = 25
-    }
+  constructor() {
+    this.name = 'hello world'
+    this.age = 25
+  }
 }
 
 const index = new TestStore()

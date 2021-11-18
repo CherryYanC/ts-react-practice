@@ -8,19 +8,19 @@ interface props {
 
 const rowRenderer: FC<props> = ({ index, style }) => {
   // const item = this.state.list[index];
-  const item = index;
+  const item = index
   return (
     <li
       key={item}
       style={style}
       onClick={() => {
-        console.log("item-", index);
+        console.log('item-', index)
       }}
     >
       item-{index}
     </li>
-  );
-};
+  )
+}
 
 const VirtualList: FC = () => {
   const [startIndex, setStartIndex] = useState(0)
@@ -31,11 +31,11 @@ const VirtualList: FC = () => {
   const [scrollTop, setScrollTop] = useState(0)
   const [originStartIdx, setOriginStartIdx] = useState(0)
   const [bufferSize] = useState(5)
-  const [endIndex, setEndIndex] = useState(Math.min(
-    originStartIdx + limit + bufferSize,
-    total - 1))
+  const [endIndex, setEndIndex] = useState(
+    Math.min(originStartIdx + limit + bufferSize, total - 1)
+  )
 
-  let scrollingContainer = useRef<HTMLDivElement>(null)
+  const scrollingContainer = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     console.log('endIndex', endIndex)
@@ -45,7 +45,10 @@ const VirtualList: FC = () => {
     // 判断是不是当前块在滚动
     if (evt.target === scrollingContainer.current) {
       const { scrollTop } = evt.target
-      console.log('wakakkak ', evt.target.children[1].children[0].getBoundingClientRect().height)
+      console.log(
+        'wakakkak ',
+        evt.target.children[1].children[0].getBoundingClientRect().height
+      )
       const currentStartIndex = Math.floor(scrollTop / rowHeight)
       // 判断滚动到那个元素了
       if (currentStartIndex !== originStartIdx) {
@@ -58,10 +61,11 @@ const VirtualList: FC = () => {
   }
 
   const getTransform = () => {
-    return `translate3d(0,${scrollTop -
+    return `translate3d(0,${
+      scrollTop -
       (scrollTop % rowHeight) -
       Math.min(originStartIdx, bufferSize) * rowHeight
-      }px,0)`;
+    }px,0)`
   }
 
   const renderDisplayContent = () => {
@@ -74,10 +78,10 @@ const VirtualList: FC = () => {
           style: {
             height: rowHeight + 'px',
             lineHeight: rowHeight + 'px',
-            borderBottom: "1px solid #000",
+            borderBottom: '1px solid #000',
             width: '100%',
-            boxSizing: 'border-box'
-          }
+            boxSizing: 'border-box',
+          },
         })
       )
     }
@@ -85,18 +89,20 @@ const VirtualList: FC = () => {
   }
 
   return (
-    <div style={{
-      width: '370px',
-      height: '667px'
-    }}>
+    <div
+      style={{
+        width: '370px',
+        height: '667px',
+      }}
+    >
       <p>2. 虚拟列表</p>
       <div
         style={{
           height: 500,
           overflowY: 'auto',
           overflowX: 'hidden',
-          position: "relative",
-          backgroundColor: "#e8e8e8",
+          position: 'relative',
+          backgroundColor: '#e8e8e8',
         }}
         onScroll={onScroll}
         ref={scrollingContainer}
@@ -104,17 +110,17 @@ const VirtualList: FC = () => {
         <div
           style={{
             height: total * rowHeight,
-            position: "relative",
+            position: 'relative',
             zIndex: -1,
           }}
         ></div>
         <div
           style={{
-            width: "100%",
-            position: "absolute",
+            width: '100%',
+            position: 'absolute',
             top: 0,
             border: '1px solid purple',
-            transform: getTransform()
+            transform: getTransform(),
           }}
         >
           {renderDisplayContent()}

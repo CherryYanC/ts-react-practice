@@ -17,3 +17,5 @@ function TextHook () {
     </div>
   )
 }
+
+export default TextHook
