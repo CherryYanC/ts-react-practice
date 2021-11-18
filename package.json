@@ -35,7 +35,30 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
+    "husky": "^4.3.8",
     "less": "^4.1.1",
+    "lint-staged": "^12.0.2",
     "prettier": "^2.4.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,js}": [
+      "eslint --cache --fix"
+    ],
+    "src/**/*.{less,css}": [
+      "stylelint --cache --fix"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }

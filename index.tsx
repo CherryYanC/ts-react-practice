@@ -19,6 +19,7 @@ class App extends React.Component {
     console.time('???12312')
     for (let i = 0; i < 100; i++) memoizedFibonacci(30) // ~50ms
     console.timeEnd('???12312')
+    var ssr = ''
   }
   render() {
     return (
