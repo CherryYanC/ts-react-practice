@@ -15,7 +15,10 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": ["error", {
+      "useTabs": false,
+      "tabWidth": 2
+    }],
     "@typescript-eslint/no-explicit-any": ["off"]
   }
 }
