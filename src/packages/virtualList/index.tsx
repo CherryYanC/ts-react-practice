@@ -22,6 +22,8 @@ const rowRenderer: FC<props> = ({ index, style }) => {
   )
 }
 
+const testObj = {}
+
 const VirtualList: FC = () => {
   const [startIndex, setStartIndex] = useState(0)
   const [total, setTotal] = useState(1200)
