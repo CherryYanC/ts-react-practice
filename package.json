@@ -5,8 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --config config/webpack.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ./ --ext .ts"
+    "build": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint \"src/**/*.{ts,tsx,js}\"",
+    "eslint:fix": "yarn eslint --fix",
+    "stylelint": "stylelint \"src/**/*.{less,css}\"",
+    "stylelint:fix": "yarn stylelint --fix --custom-syntax postcss-less",
+    "lint:fix": "yarn eslint:fix; yarn stylelint:fix"
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +29,7 @@
     "mobx": "^6.2.0",
     "mobx-react": "^7.1.0",
     "path": "^0.12.7",
+    "postcss-less": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "style-loader": "^2.0.0",

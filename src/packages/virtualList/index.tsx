@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes, useEffect, useRef, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import './index.less'
 
 interface props {
@@ -21,8 +21,6 @@ const rowRenderer: FC<props> = ({ index, style }) => {
     </li>
   )
 }
-
-const testObj = {}
 
 const VirtualList: FC = () => {
   const [startIndex, setStartIndex] = useState(0)

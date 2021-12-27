@@ -1,4 +1,4 @@
-import { makeAutoObservable, observable } from 'mobx'
+import { makeAutoObservable } from 'mobx'
 
 type ListProps = {
   message: string
