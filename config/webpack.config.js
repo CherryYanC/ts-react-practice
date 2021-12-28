@@ -2,7 +2,6 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  mode: 'development',
   entry: {
     main: './src/index.tsx',
   },
@@ -18,13 +17,6 @@ module.exports = {
       '@/utils': path.resolve(__dirname, './../src/utils/'),
       '@/stores': path.resolve(__dirname, './../src/stores/'),
     }
-  },
-  devtool: 'inline-source-map',
-  devServer: {
-    hot: true,
-    open: true,
-    host: 'localhost',
-    port: 8000,
   },
   module: {
     unknownContextCritical: false,

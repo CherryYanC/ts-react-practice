@@ -1,0 +1,42 @@
+name: Test CI
+on:
+  push:
+    branches:
+      - master
+      - 'feat/*'
+      - 'hotfix/*'
+
+jobs: 
+  install-and-lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x] 
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: setup node ${{ matrix.node-version }}
+        uses: actions/setup-node@master
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: install dependencies
+        run: yarn
+
+      - name: begin lint
+        run: yarn run lint:fix
+
+
+  build: 
+    runs-on: ubuntu-latest
+    needs: install-and-lint
+    steps: 
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: install dependencies
+        run: yarn
+
+      - name: begin build
+        run: yarn run build
